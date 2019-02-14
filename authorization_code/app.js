@@ -14,15 +14,17 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
 var SpotifyWebApi = require('spotify-web-api-node');
-var spotifyApi = new SpotifyWebApi({
-  clientId : '65a4c71c7be94e7d9c605d3580235016',
-  clientSecret : '5b9bff3651274f95b1e64755afc10226',
-});
 
-var client_id = '65a4c71c7be94e7d9c605d3580235016'; // Your client id
-var client_secret = '5b9bff3651274f95b1e64755afc10226'; // Your secret
+
+var client_id = process.env.CLIENT_ID; // Your client id
+var client_secret = process.env.CLIENT_SECRET; // Your secret
 var redirect_uri = 'http://localhost:8888/callback/'//'http://localhost:8080/music/'; // Your redirect uri
 //  process.env.REDIRECT_URI === 'production' ? 'http://rpiled.netlify.com/' : 'http://localhost:8888/callback/',
+
+var spotifyApi = new SpotifyWebApi({
+  clientId : client_id,
+  clientSecret : client_secret,
+});
 
 /**
  * Generates a random string containing numbers and letters
